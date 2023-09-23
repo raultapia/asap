@@ -1,0 +1,10 @@
+float64 time
+float64 time_min
+float64 time_max
+uint32 size_min
+uint32 size_max
+float64 kappa
+float64 gamma_min
+float64 gamma_max
+---
+bool success

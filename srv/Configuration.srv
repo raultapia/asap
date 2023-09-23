@@ -1,0 +1,11 @@
+bool aps_enabled
+uint32 aps_exposure
+uint32 aps_rate
+bool dvs_enabled
+float64 dvs_gamma
+string dvs_mode
+uint32 dvs_rate
+uint32 dvs_size
+bool imu_enabled
+---
+bool success

@@ -1,0 +1,5 @@
+<launch>
+  <rosparam command="load" file="$(find asap)/config/asap.yaml"/>
+  <node name="asap" pkg="asap" type="asap" output="screen"/>
+  <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" output="screen"/>
+</launch>

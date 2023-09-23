@@ -1,0 +1,14 @@
+---
+asap:
+  aps:
+    enabled: true
+    exposure: 6500  # usec
+    rate: 40  # Hz
+  dvs:
+    enabled: true
+    gamma: 1
+    mode: "SIZE"  # SIZE, TIME, or AUTO
+    rate: 50  # Hz (not used if SIZE or AUTO)
+    size: 5000  # events (not used if TIME or AUTO)
+  imu:
+    enabled: true

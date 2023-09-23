@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this work in an academic context, please cite the following publication"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Tapia"
+    given-names: "Raul"
+    orcid: "https://orcid.org/0000-0002-4435-5466"
+  - family-names: "Martínez-de Dios"
+    given-names: "José Ramiro"
+    orcid: "https://orcid.org/0000-0001-9431-7831"
+  - family-names: "Gómez Eguíluz"
+    given-names: "Augusto"
+    orcid: "https://orcid.org/0000-0002-2285-2605"
+  - family-names: "Ollero"
+    given-names: "Anibal"
+    orcid: "https://orcid.org/0000-0003-2155-2472"
+  title: "ASAP: Adaptive Transmission Scheme for Online Processing of Event-Based Algorithms"
+  year: 2022
+  volume: 46
+  start: 879
+  end: 892
+  doi: 10.1007/s10514-022-10051-y

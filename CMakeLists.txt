@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.10.0)
+project(asap)
+
+find_package(catkin REQUIRED COMPONENTS cv_bridge dvs_msgs dynamic_reconfigure message_generation roscpp std_msgs)
+find_package(OpenCV REQUIRED)
+include_directories(include)
+include_directories(${catkin_INCLUDE_DIRS})
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+add_service_files(FILES Feedback.srv)
+add_service_files(FILES Configuration.srv)
+add_service_files(FILES Roi.srv)
+generate_messages(DEPENDENCIES sensor_msgs std_msgs)
+generate_dynamic_reconfigure_options(config/parameters.cfg)
+catkin_package(CATKIN_DEPENDS message_runtime sensor_msgs std_msgs)
+
+add_executable(asap src/asap_node.cpp src/configuration.cpp src/main_thread.cpp src/publishers.cpp src/services.cpp)
+add_dependencies(asap asap_gencfg)
+target_link_libraries(asap ${catkin_LIBRARIES})
+target_link_libraries(asap ${OpenCV_LIBRARIES})
+target_link_libraries(asap openev)
