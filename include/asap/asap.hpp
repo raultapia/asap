@@ -8,7 +8,7 @@
 #include <cv_bridge/cv_bridge.h>
 #include <dvs_msgs/EventArray.h>
 #include <dynamic_reconfigure/server.h>
-#include <openev/camera.hpp>
+#include <openev/devices.hpp>
 #include <random>
 #include <ros/ros.h>
 #include <sensor_msgs/CameraInfo.h>
@@ -78,10 +78,10 @@ public:
 
 private:
   ros::NodeHandle &n_;
-  ev::Davis camera_;
-  ev::EventBuffer dvsBuffer_{};
-  ev::StampedMatBuffer apsBuffer_{};
-  ev::ImuBuffer imuBuffer_{};
+  ev::Davis346 camera_;
+  ev::Queue dvsBuffer_{};
+  ev::StampedMatQueue apsBuffer_{};
+  ev::ImuQueue imuBuffer_{};
   std::mutex dvsMutex_{}, apsMutex_{}, imuMutex_{};
   std::atomic<bool> running_;
   std::thread dvsThread_, apsThread_, imuThread_, cameraInfoThread_;

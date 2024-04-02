@@ -1,6 +1,6 @@
 #include "asap/asap.hpp"
 
-Asap::Asap(ros::NodeHandle &n) : n_{n}, camera_{ev::device::DAVIS346} {
+Asap::Asap(ros::NodeHandle &n) : n_{n} {
   loadConfig();
   initPublishers();
   initServices();

@@ -3,6 +3,7 @@ project(asap)
 
 find_package(catkin REQUIRED COMPONENTS cv_bridge dvs_msgs dynamic_reconfigure message_generation roscpp std_msgs)
 find_package(OpenCV REQUIRED)
+find_package(OpenEV REQUIRED)
 include_directories(include)
 include_directories(${catkin_INCLUDE_DIRS})
 include_directories(${OpenCV_INCLUDE_DIRS})

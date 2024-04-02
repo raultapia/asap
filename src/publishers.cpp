@@ -109,7 +109,7 @@ void Asap::apsPublishFunction() {
     std::this_thread::sleep_for(std::chrono::nanoseconds(THREAD_SLEEP_TIME_NSEC));
   }
 
-  ev::StampedMatPacket aps;
+  ev::StampedMatVector aps;
   sensor_msgs::Image msg;
   std_msgs::Header header;
   header.frame_id = "/cam";
@@ -141,7 +141,7 @@ void Asap::imuPublishFunction() {
     std::this_thread::sleep_for(std::chrono::nanoseconds(THREAD_SLEEP_TIME_NSEC));
   }
 
-  ev::ImuPacket imu;
+  ev::ImuVector imu;
   sensor_msgs::Imu msg;
   msg.header.frame_id = "/cam";
   msg.orientation_covariance[0] = -1;
