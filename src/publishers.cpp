@@ -40,6 +40,14 @@ void Asap::dvsPublishFunction() {
       std::this_thread::sleep_for(std::chrono::nanoseconds(THREAD_SLEEP_TIME_NSEC));
       continue;
     }
+    if(dvsPub_.getNumSubscribers() < 1){
+      dvsMutex_.lock();
+      while(!dvsBuffer_.empty()){
+        dvsBuffer_.pop();
+      }
+      dvsMutex_.unlock();
+      continue;
+    }
 
     switch(config_.dvs.mode) {
     case Mode::SIZE:
@@ -119,6 +127,14 @@ void Asap::apsPublishFunction() {
       std::this_thread::sleep_for(std::chrono::nanoseconds(THREAD_SLEEP_TIME_NSEC));
       continue;
     }
+    if(apsPub_.getNumSubscribers() < 1){
+      apsMutex_.lock();
+      while(!apsBuffer_.empty()){
+        apsBuffer_.pop();
+      }
+      apsMutex_.unlock();
+      continue;
+    }
 
     apsMutex_.lock();
     while(!apsBuffer_.empty()) {
@@ -149,6 +165,14 @@ void Asap::imuPublishFunction() {
   while(running_.load()) {
     if(!config_.imu.enabled || imuBuffer_.empty()) {
       std::this_thread::sleep_for(std::chrono::nanoseconds(THREAD_SLEEP_TIME_NSEC));
+      continue;
+    }
+    if(imuPub_.getNumSubscribers() < 1){
+      imuMutex_.lock();
+      while(!imuBuffer_.empty()){
+        imuBuffer_.pop();
+      }
+      imuMutex_.unlock();
       continue;
     }
 
