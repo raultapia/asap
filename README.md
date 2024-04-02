@@ -1,6 +1,6 @@
 <div align="center" style="margin-bottom: 10px;">
 <a href="https://github.com/raultapia/asap">
-<img width="500" src="images/asap.png" alt="logo">
+<img width="500" src=".github/assets/asap.png" alt="logo">
 </a>
 </div>
 <p align="justify" class="brief">
