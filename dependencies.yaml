@@ -1,0 +1,5 @@
+repositories:
+  rpg_dvs_ros:
+    type: git
+    url: https://github.com/uzh-rpg/rpg_dvs_ros
+    version: master

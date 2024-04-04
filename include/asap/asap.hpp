@@ -4,7 +4,7 @@
 #include <asap/Configuration.h>
 #include <asap/Feedback.h>
 #include <asap/Roi.h>
-#include <asap/asapConfig.h>
+#include <asap/parametersConfig.h>
 #include <cv_bridge/cv_bridge.h>
 #include <dvs_msgs/EventArray.h>
 #include <dynamic_reconfigure/server.h>
@@ -28,6 +28,7 @@ constexpr size_t EVENT_RATE_QUEUE_MAX_SIZE = 500;
 constexpr size_t DVS_BUFFER_WARNING_SIZE = 1e8;
 constexpr size_t APS_BUFFER_WARNING_SIZE = 50;
 constexpr size_t IMU_BUFFER_WARNING_SIZE = 300;
+constexpr int THREAD_SLEEP_TIME_NSEC = 10;
 
 constexpr int APS_DEFAULT_EXPOSURE = 6500;
 constexpr double APS_DEFAULT_RATE = 50;
@@ -36,34 +37,29 @@ constexpr double DVS_DEFAULT_RATE = 50;
 constexpr int DVS_DEFAULT_SIZE = 1000;
 constexpr Mode DVS_DEFAULT_MODE = Mode::SIZE;
 
-constexpr int DVS_CONFIGURATION_ALIGNED = 32;
-constexpr int APS_CONFIGURATION_ALIGNED = 16;
-constexpr int CONFIGURATION_ALIGNED = 128;
-constexpr int THREAD_SLEEP_TIME_NSEC = 10;
-
-using DvsConfiguration = struct {
+struct DvsConfiguration {
   bool enabled{true};
   Mode mode{DVS_DEFAULT_MODE};
   int size{DVS_DEFAULT_SIZE};
   double rate{DVS_DEFAULT_RATE};
   double gamma{DVS_DEFAULT_GAMMA};
-} __attribute__((aligned(DVS_CONFIGURATION_ALIGNED)));
+} __attribute__((aligned(32)));
 
-using ApsConfiguration = struct {
+struct ApsConfiguration {
   bool enabled{true};
   double rate{APS_DEFAULT_RATE};
   int exposure{APS_DEFAULT_EXPOSURE};
-} __attribute__((aligned(APS_CONFIGURATION_ALIGNED)));
+} __attribute__((aligned(16)));
 
-using ImuConfiguration = struct {
+struct ImuConfiguration {
   bool enabled{true};
 };
 
-using Configuration = struct {
+struct Configuration {
   DvsConfiguration dvs;
   ApsConfiguration aps;
   ImuConfiguration imu;
-} __attribute__((aligned(CONFIGURATION_ALIGNED)));
+} __attribute__((aligned(128)));
 
 class Asap {
 public:
@@ -87,7 +83,7 @@ private:
   std::thread dvsThread_, apsThread_, imuThread_, cameraInfoThread_;
   ros::Publisher dvsPub_{}, apsPub_{}, imuPub_{}, cameraInfoPub_{};
   ros::ServiceServer feedbackSrv_{}, configurationSrv_{}, roiSrv_{};
-  dynamic_reconfigure::Server<asap::asapConfig> server_{};
+  dynamic_reconfigure::Server<asap::parametersConfig> server_{};
   std::array<double, 3> autoModeRecall_{0, 0, 0};
   std::queue<double> timeQueue_{};
   double gammaMax_{};
@@ -111,7 +107,7 @@ private:
   bool feedbackCallback(asap::Feedback::Request &, asap::Feedback::Response &);
   bool setConfigurationCallback(asap::Configuration::Request &, asap::Configuration::Response &);
   bool setRoiCallback(asap::Roi::Request &, asap::Roi::Response &);
-  void dynamicReconfigureCallback(asap::asapConfig &config, uint32_t level);
+  void dynamicReconfigureCallback(asap::parametersConfig &config, uint32_t level);
 };
 
 inline double saturation(const double x, const double xmax, const double xmin) {

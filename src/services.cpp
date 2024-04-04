@@ -62,7 +62,7 @@ bool Asap::setRoiCallback(asap::Roi::Request &req, asap::Roi::Response &res) {
   return res.success;
 }
 
-void Asap::dynamicReconfigureCallback(asap::asapConfig &config, uint32_t level) {
+void Asap::dynamicReconfigureCallback(asap::parametersConfig &config, uint32_t level) {
   if(static_cast<int>(level) < 0) {
     return;
   }
