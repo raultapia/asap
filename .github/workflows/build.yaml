@@ -14,9 +14,7 @@ jobs:
         with:
           required-ros-distributions: noetic
       - run: |
-              sudo add-apt-repository ppa:inivation-ppa/inivation
-              sudo apt update
-              sudo apt install libcaer-dev
+              sudo apt install libudev-dev
               git clone https://github.com/raultapia/openev
               mkdir -p openev/build
               cd openev/build
