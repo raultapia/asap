@@ -1,5 +1,5 @@
 repositories:
-  rpg_dvs_ros:
+  dvs_msgs:
     type: git
-    url: https://github.com/uzh-rpg/rpg_dvs_ros
+    url: https://github.com/ros-event-camera/dvs_msgs
     version: master

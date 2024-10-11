@@ -1,14 +1,12 @@
 ---
 asap:
-  aps:
-    enabled: true
-    exposure: 6500  # usec
-    rate: 40  # Hz
-  dvs:
-    enabled: true
-    gamma: 1
-    mode: "SIZE"  # SIZE, TIME, or AUTO
-    rate: 50  # Hz (not used if SIZE or AUTO)
-    size: 5000  # events (not used if TIME or AUTO)
-  imu:
-    enabled: true
+  ros__parameters:
+    aps/enabled: false
+    aps/exposure: 6500  # usec
+    aps/rate: 40.0  # Hz
+    dvs/enabled: true
+    dvs/gamma: 1.0
+    dvs/mode: "SIZE"  # SIZE, TIME, or AUTO
+    dvs/rate: 50.0  # Hz (not used if SIZE or AUTO)
+    dvs/size: 5000  # events (not used if TIME or AUTO)
+    imu/enabled: true

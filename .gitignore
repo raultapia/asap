@@ -1,5 +1,3 @@
+.github/assets/*.svg
 build/
-cmake/
-private/
 tests/
-.clang-format

@@ -12,10 +12,12 @@ ASAP is a novel event handling framework that dynamically adapts the transmissio
 Some dependencies are required:
 
 -   [ROS](https://wiki.ros.org/ROS/Installation)
--   [dvs_msgs](https://github.com/uzh-rpg/rpg_dvs_ros)
+-   [dvs_msgs](https://github.com/ros-event-camera/dvs_msgs) (original repo [here](https://github.com/uzh-rpg/rpg_dvs_ros))
 -   [openev](https://github.com/raultapia/openev)
 
-Then, ASAP can be installed:
+Then, ASAP can be installed.
+
+For ROS1:
 ```bash
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
@@ -23,9 +25,21 @@ git clone https://github.com/raultapia/asap
 catkin build asap
 ```
 
+For ROS2:
+```bash
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+git clone https://github.com/raultapia/asap
+colcon build --packages-up-to asap
+```
+
 ## 🖥️ Usage
 ```bash
 roslaunch asap asap.launch
+```
+or
+```bash
+ros2 launch asap asap.launch.py
 ```
 
 ## 📜 Citation

@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-package:
+  build-package-ros1:
     runs-on: ubuntu-20.04
 
     steps:
@@ -25,4 +25,26 @@ jobs:
         with:
           package-name: asap
           target-ros1-distro: noetic
+          vcs-repo-file-url: https://raw.githubusercontent.com/raultapia/asap/main/dependencies.yaml
+
+  build-package-ros2:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: humble
+      - run: |
+              sudo apt install libudev-dev
+              git clone https://github.com/raultapia/openev
+              mkdir -p openev/build
+              cd openev/build
+              cmake ..
+              make
+              sudo make install
+      - uses: ros-tooling/action-ros-ci@v0.3
+        with:
+          package-name: asap
+          target-ros2-distro: humble
           vcs-repo-file-url: https://raw.githubusercontent.com/raultapia/asap/main/dependencies.yaml

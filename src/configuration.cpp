@@ -5,47 +5,79 @@ bool Asap::loadConfig() {
   if(checkConfig()) {
     /*** --- DVS --- ***/
     std::string aux("");
-    n_.getParam("/asap/dvs/mode", aux);
+#if ROS == 1
+    n_->getParam("dvs/mode", aux);
+#elif ROS == 2
+    n_->get_parameter("dvs/mode", aux);
+#endif
     std::unordered_map<std::string, Mode> STRING2MODE = {{"TIME", Mode::TIME}, {"SIZE", Mode::SIZE}, {"AUTO", Mode::AUTO}};
     if(STRING2MODE.count(aux)) {
       config_.dvs.mode = STRING2MODE[aux];
     } else {
-      ROS_ERROR("ASAP: Error parsing configuration.");
+      rosx_log_error("ASAP: Error parsing configuration.");
       success = false;
     }
 
     switch(config_.dvs.mode) {
     case Mode::SIZE:
-      n_.getParam("/asap/dvs/enabled", config_.dvs.enabled);
-      n_.getParam("/asap/dvs/gamma", config_.dvs.gamma);
-      n_.getParam("/asap/dvs/size", config_.dvs.size);
+#if ROS == 1
+      n_->getParam("dvs/enabled", config_.dvs.enabled);
+      n_->getParam("dvs/gamma", config_.dvs.gamma);
+      n_->getParam("dvs/size", config_.dvs.size);
+#elif ROS == 2
+      n_->get_parameter("dvs/enabled", config_.dvs.enabled);
+      n_->get_parameter("dvs/gamma", config_.dvs.gamma);
+      n_->get_parameter("dvs/size", config_.dvs.size);
+#endif
       config_.dvs.rate = 0;
       break;
     case Mode::TIME:
-      n_.getParam("/asap/dvs/enabled", config_.dvs.enabled);
-      n_.getParam("/asap/dvs/gamma", config_.dvs.gamma);
-      n_.getParam("/asap/dvs/rate", config_.dvs.rate);
+#if ROS == 1
+      n_->getParam("dvs/enabled", config_.dvs.enabled);
+      n_->getParam("dvs/gamma", config_.dvs.gamma);
+      n_->getParam("dvs/rate", config_.dvs.rate);
+#elif ROS == 2
+      n_->get_parameter("dvs/enabled", config_.dvs.enabled);
+      n_->get_parameter("dvs/gamma", config_.dvs.gamma);
+      n_->get_parameter("dvs/rate", config_.dvs.rate);
+#endif
       config_.dvs.size = 0;
       break;
     case Mode::AUTO:
-      n_.getParam("/asap/dvs/enabled", config_.dvs.enabled);
+#if ROS == 1
+      n_->getParam("dvs/enabled", config_.dvs.enabled);
+#elif ROS == 2
+      n_->get_parameter("dvs/enabled", config_.dvs.enabled);
+#endif
       config_.dvs.rate = 0;
       break;
     }
 
+#if ROS == 1
     /*** --- APS --- ***/
-    n_.getParam("/asap/aps/enabled", config_.aps.enabled);
-    n_.getParam("/asap/aps/exposure", config_.aps.exposure);
-    n_.getParam("/asap/aps/rate", config_.aps.rate);
+    n_->getParam("aps/enabled", config_.aps.enabled);
+    n_->getParam("aps/exposure", config_.aps.exposure);
+    n_->getParam("aps/rate", config_.aps.rate);
+#elif ROS == 2
+    /*** --- APS --- ***/
+    n_->get_parameter("aps/enabled", config_.aps.enabled);
+    n_->get_parameter("aps/exposure", config_.aps.exposure);
+    n_->get_parameter("aps/rate", config_.aps.rate);
+#endif
 
+#if ROS == 1
     /*** --- IMU --- ***/
-    n_.getParam("/asap/imu/enabled", config_.imu.enabled);
+    n_->getParam("imu/enabled", config_.imu.enabled);
+#elif ROS == 2
+    /*** --- IMU --- ***/
+    n_->get_parameter("imu/enabled", config_.imu.enabled);
+#endif
 
-    ROS_INFO("ASAP: New configuration loaded.");
+    rosx_log_info("ASAP: New configuration loaded.");
     displayConfig();
     configDevice();
   } else {
-    ROS_ERROR("ASAP: Error loading configuration.");
+    rosx_log_error("ASAP: Error loading configuration.");
     success = false;
   }
   return success;
@@ -79,15 +111,27 @@ void Asap::configDevice() {
 }
 
 bool Asap::checkConfig() const {
-  return n_.hasParam("/asap/aps/enabled") &&
-         n_.hasParam("/asap/aps/exposure") &&
-         n_.hasParam("/asap/aps/rate") &&
-         n_.hasParam("/asap/dvs/enabled") &&
-         n_.hasParam("/asap/dvs/gamma") &&
-         n_.hasParam("/asap/dvs/mode") &&
-         n_.hasParam("/asap/dvs/rate") &&
-         n_.hasParam("/asap/dvs/size") &&
-         n_.hasParam("/asap/imu/enabled");
+#if ROS == 1
+  return n_->hasParam("aps/enabled") &&
+         n_->hasParam("aps/exposure") &&
+         n_->hasParam("aps/rate") &&
+         n_->hasParam("dvs/enabled") &&
+         n_->hasParam("dvs/gamma") &&
+         n_->hasParam("dvs/mode") &&
+         n_->hasParam("dvs/rate") &&
+         n_->hasParam("dvs/size") &&
+         n_->hasParam("imu/enabled");
+#elif ROS == 2
+  return n_->has_parameter("aps/enabled") &&
+         n_->has_parameter("aps/exposure") &&
+         n_->has_parameter("aps/rate") &&
+         n_->has_parameter("dvs/enabled") &&
+         n_->has_parameter("dvs/gamma") &&
+         n_->has_parameter("dvs/mode") &&
+         n_->has_parameter("dvs/rate") &&
+         n_->has_parameter("dvs/size") &&
+         n_->has_parameter("imu/enabled");
+#endif
 }
 
 void Asap::displayConfig() const {
