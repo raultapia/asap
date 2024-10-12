@@ -2,49 +2,31 @@ name: Build ROS package
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build-package-ros1:
-    runs-on: ubuntu-20.04
-
+  build-package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ros-distro: melodic
+            ros-version: 1
+          - ros-distro: noetic
+            ros-version: 1
+          - ros-distro: dashing
+            ros-version: 2
+          - ros-distro: eloquent
+            ros-version: 2
+          - ros-distro: foxy
+            ros-version: 2
+          - ros-distro: galactic
+            ros-version: 2
+          - ros-distro: humble
+            ros-version: 2
+          - ros-distro: iron
+            ros-version: 2
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ros-tooling/setup-ros@v0.7
-        with:
-          required-ros-distributions: noetic
-      - run: |
-              sudo apt install libudev-dev
-              git clone https://github.com/raultapia/openev
-              mkdir -p openev/build
-              cd openev/build
-              cmake ..
-              make
-              sudo make install
-      - uses: ros-tooling/action-ros-ci@v0.3
-        with:
-          package-name: asap
-          target-ros1-distro: noetic
-          vcs-repo-file-url: https://raw.githubusercontent.com/raultapia/asap/main/dependencies.yaml
-
-  build-package-ros2:
-    runs-on: ubuntu-22.04
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ros-tooling/setup-ros@v0.7
-        with:
-          required-ros-distributions: humble
-      - run: |
-              sudo apt install libudev-dev
-              git clone https://github.com/raultapia/openev
-              mkdir -p openev/build
-              cd openev/build
-              cmake ..
-              make
-              sudo make install
-      - uses: ros-tooling/action-ros-ci@v0.3
-        with:
-          package-name: asap
-          target-ros2-distro: humble
-          vcs-repo-file-url: https://raw.githubusercontent.com/raultapia/asap/main/dependencies.yaml
+      - run: docker build --build-arg ROS_DISTRO=${{ matrix.ros-distro }} --build-arg ROS_VERSION=${{ matrix.ros-version }} .

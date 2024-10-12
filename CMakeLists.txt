@@ -7,6 +7,7 @@ elseif(DEFINED ENV{ROS_VERSION} AND $ENV{ROS_VERSION} EQUAL 2)
   set(ROS2 TRUE)
 endif()
 
+find_package(OpenCV REQUIRED)
 find_package(OpenEV REQUIRED)
 if(ROS1)
   find_package(catkin REQUIRED COMPONENTS cv_bridge dvs_msgs dynamic_reconfigure message_generation roscpp std_msgs)
@@ -21,6 +22,7 @@ elseif(ROS2)
 endif()
 
 include_directories(include)
+include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(${OpenEV_INCLUDE_DIRS})
 if(ROS1)
   include_directories(${catkin_INCLUDE_DIRS})
@@ -55,6 +57,7 @@ if(ROS1)
   add_dependencies(asap_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
   target_compile_options(asap_node PRIVATE "-DROS=1")
   target_link_libraries(asap_node ${catkin_LIBRARIES})
+  target_link_libraries(asap_node ${OpenCV_LIBRARIES})
   target_link_libraries(asap_node ${OpenEV_LIBRARIES})
 elseif(ROS2)
   target_compile_options(asap_node PRIVATE "-DROS=2")
@@ -62,10 +65,12 @@ elseif(ROS2)
     asap_node
     cv_bridge
     dvs_msgs
+    OpenCV
     OpenEV
     rclcpp
     sensor_msgs
     std_msgs)
+  target_link_libraries(asap_node ${OpenCV_LIBRARIES})
   target_link_libraries(asap_node ${OpenEV_LIBRARIES})
   install(TARGETS asap_node DESTINATION lib/${PROJECT_NAME})
   install(DIRECTORY ${OpenEV_LIBRARY_DIRS}/ DESTINATION lib)
