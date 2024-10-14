@@ -1,5 +1,8 @@
 ARG ROS_DISTRO=noetic
 FROM osrf/ros:$ROS_DISTRO-desktop
+LABEL org.opencontainers.image.source=https://github.com/raultapia/asap
+LABEL org.opencontainers.image.description="ASAP container image"
+LABEL org.opencontainers.image.licenses=GPL-3.0-or-later
 ARG ROS_VERSION=1
 
 RUN apt update
