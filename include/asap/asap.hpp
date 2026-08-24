@@ -165,7 +165,7 @@ inline double timediff(const std::vector<dvs_msgs::msg::Event> &x) {
 #endif
 
 inline double timediff(const std::queue<double> &x) {
-  return (x.size() < 2) ? 0 : x.back() - x.front();
+  return ((x.size() < 2) ? 0 : x.back() - x.front()) * 1e-6;
 }
 
 inline double hz2sec(const double &x) {

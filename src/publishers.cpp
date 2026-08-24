@@ -96,9 +96,9 @@ void Asap::dvsPublishFunction() {
           emsg.x = e.x;
           emsg.y = e.y;
 #if ROS == 1
-          emsg.ts.fromSec(e.t);
+          emsg.ts.fromSec(e.t * 1e-6);
 #elif ROS == 2
-          emsg.ts = rclcpp::Time(e.t);
+          emsg.ts = rclcpp::Time(e.t * 1e-6);
 #endif
           emsg.polarity = e.p;
           amsg.events.push_back(emsg);
@@ -114,9 +114,9 @@ void Asap::dvsPublishFunction() {
           emsg.x = e.x;
           emsg.y = e.y;
 #if ROS == 1
-          emsg.ts.fromSec(e.t);
+          emsg.ts.fromSec(e.t * 1e-6);
 #elif ROS == 2
-          emsg.ts = rclcpp::Time(e.t);
+          emsg.ts = rclcpp::Time(e.t * 1e-6);
 #endif
           emsg.polarity = e.p;
           amsg.events.push_back(emsg);
@@ -191,9 +191,9 @@ void Asap::apsPublishFunction() {
     get_data_from_buffer(apsBuffer_, aps, apsMutex_);
     for(const ev::StampedMat &a : aps) {
 #if ROS == 1
-      header.stamp.fromSec(a.t);
+      header.stamp.fromSec(a.t * 1e-6);
 #elif ROS == 2
-      header.stamp = rclcpp::Time(a.t);
+      header.stamp = rclcpp::Time(a.t * 1e-6);
 #endif
       cv_bridge::CvImage br = cv_bridge::CvImage(header, sensor_msgs::image_encodings::MONO8, a);
       br.toImageMsg(msg);
@@ -234,9 +234,9 @@ void Asap::imuPublishFunction() {
     get_data_from_buffer(imuBuffer_, imu, imuMutex_);
     for(const ev::Imu &i : imu) {
 #if ROS == 1
-      msg.header.stamp.fromSec(i.t);
+      msg.header.stamp.fromSec(i.t * 1e-6);
 #elif ROS == 2
-      msg.header.stamp = rclcpp::Time(i.t);
+      msg.header.stamp = rclcpp::Time(i.t * 1e-6);
 #endif
       msg.linear_acceleration.x = i.linear_acceleration.x;
       msg.linear_acceleration.y = i.linear_acceleration.y;
