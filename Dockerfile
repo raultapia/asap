@@ -10,6 +10,7 @@ RUN apt install -y wget
 RUN apt install -y git
 RUN apt install -y ros-$ROS_DISTRO-vision-opencv
 RUN apt install -y ros-$ROS_DISTRO-cv-bridge
+RUN apt install -y unzip
 
 # cmake
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz
@@ -17,6 +18,16 @@ RUN tar -xzvf cmake-3.20.0.tar.gz
 WORKDIR /cmake-3.20.0
 RUN ./bootstrap
 RUN make
+RUN make install
+WORKDIR /
+
+# eigen
+RUN wget https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip
+RUN unzip eigen-3.4.0.zip
+WORKDIR /eigen-3.4.0
+RUN mkdir build
+WORKDIR /eigen-3.4.0/build
+RUN cmake ..
 RUN make install
 WORKDIR /
 
