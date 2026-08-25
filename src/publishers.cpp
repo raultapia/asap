@@ -17,6 +17,16 @@ inline void get_data_from_buffer(std::queue<T> &q, std::vector<T> &v, std::mutex
   }
 }
 
+template <typename T>
+inline void clear_vector(std::vector<T> &v, const std::size_t capacity) {
+  v.clear();
+  if(v.capacity() > capacity) {
+    std::vector<T> trimmed{};
+    trimmed.reserve(capacity);
+    v.swap(trimmed);
+  }
+}
+
 void Asap::initPublishers() {
   if(config_.dvs.enabled) {
 #if ROS == 1
@@ -155,7 +165,7 @@ void Asap::dvsPublishFunction() {
     amsg.height = camera_.getSensorSize().height;
     amsg.width = camera_.getSensorSize().width;
     dvsPub_->publish(amsg);
-    amsg.events.clear();
+    clear_vector(amsg.events, (config_.dvs.size > 0) ? static_cast<std::size_t>(config_.dvs.size) : DVS_BUFFER_WARNING_SIZE);
   }
 }
 
@@ -199,7 +209,7 @@ void Asap::apsPublishFunction() {
       br.toImageMsg(msg);
       apsPub_->publish(msg);
     }
-    aps.clear();
+    clear_vector(aps, APS_BUFFER_WARNING_SIZE);
   }
 }
 
@@ -246,7 +256,7 @@ void Asap::imuPublishFunction() {
       msg.angular_velocity.z = i.angular_velocity.z;
       imuPub_->publish(msg);
     }
-    imu.clear();
+    clear_vector(imu, IMU_BUFFER_WARNING_SIZE);
   }
 }
 
