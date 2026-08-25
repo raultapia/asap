@@ -68,21 +68,21 @@ bool Asap::setConfigurationCallback(asap_Configuration_Request req, asap_Configu
 #if ROS == 1
     n_->setParam("aps/enabled", static_cast<bool>(GET(req).aps_enabled));
     n_->setParam("aps/exposure", static_cast<int>(GET(req).aps_exposure));
-    n_->setParam("aps/rate", static_cast<int>(GET(req).aps_rate));
+    n_->setParam("aps/rate", static_cast<double>(GET(req).aps_rate));
     n_->setParam("dvs/enabled", static_cast<bool>(GET(req).dvs_enabled));
     n_->setParam("dvs/gamma", static_cast<double>(GET(req).dvs_gamma));
     n_->setParam("dvs/mode", static_cast<std::string>(GET(req).dvs_mode));
-    n_->setParam("dvs/rate", static_cast<int>(GET(req).dvs_rate));
+    n_->setParam("dvs/rate", static_cast<double>(GET(req).dvs_rate));
     n_->setParam("dvs/size", static_cast<int>(GET(req).dvs_size));
     n_->setParam("imu/enabled", static_cast<bool>(GET(req).imu_enabled));
 #elif ROS == 2
     n_->set_parameter(rclcpp::Parameter("aps/enabled", static_cast<bool>(GET(req).aps_enabled)));
     n_->set_parameter(rclcpp::Parameter("aps/exposure", static_cast<int>(GET(req).aps_exposure)));
-    n_->set_parameter(rclcpp::Parameter("aps/rate", static_cast<int>(GET(req).aps_rate)));
+    n_->set_parameter(rclcpp::Parameter("aps/rate", static_cast<double>(GET(req).aps_rate)));
     n_->set_parameter(rclcpp::Parameter("dvs/enabled", static_cast<bool>(GET(req).dvs_enabled)));
     n_->set_parameter(rclcpp::Parameter("dvs/gamma", static_cast<double>(GET(req).dvs_gamma)));
     n_->set_parameter(rclcpp::Parameter("dvs/mode", static_cast<std::string>(GET(req).dvs_mode)));
-    n_->set_parameter(rclcpp::Parameter("dvs/rate", static_cast<int>(GET(req).dvs_rate)));
+    n_->set_parameter(rclcpp::Parameter("dvs/rate", static_cast<double>(GET(req).dvs_rate)));
     n_->set_parameter(rclcpp::Parameter("dvs/size", static_cast<int>(GET(req).dvs_size)));
     n_->set_parameter(rclcpp::Parameter("imu/enabled", static_cast<bool>(GET(req).imu_enabled)));
 #endif
@@ -107,21 +107,21 @@ void Asap::dynamicReconfigureCallback(asap::parametersConfig &config, uint32_t l
 #if ROS == 1
     n_->setParam("aps/enabled", static_cast<bool>(config.aps_enabled));
     n_->setParam("aps/exposure", static_cast<int>(config.aps_exposure));
-    n_->setParam("aps/rate", static_cast<int>(config.aps_rate));
+    n_->setParam("aps/rate", static_cast<double>(config.aps_rate));
     n_->setParam("dvs/enabled", static_cast<bool>(config.dvs_enabled));
     n_->setParam("dvs/gamma", static_cast<double>(config.dvs_gamma));
     n_->setParam("dvs/mode", static_cast<std::string>(config.dvs_mode));
-    n_->setParam("dvs/rate", static_cast<int>(config.dvs_rate));
+    n_->setParam("dvs/rate", static_cast<double>(config.dvs_rate));
     n_->setParam("dvs/size", static_cast<int>(config.dvs_size));
     n_->setParam("imu/enabled", static_cast<bool>(config.imu_enabled));
 #elif ROS == 2
     n_->set_parameter(rclcpp::Parameter("aps/enabled", static_cast<bool>(config.aps_enabled)));
     n_->set_parameter(rclcpp::Parameter("aps/exposure", static_cast<int>(config.aps_exposure)));
-    n_->set_parameter(rclcpp::Parameter("aps/rate", static_cast<int>(config.aps_rate)));
+    n_->set_parameter(rclcpp::Parameter("aps/rate", static_cast<double>(config.aps_rate)));
     n_->set_parameter(rclcpp::Parameter("dvs/enabled", static_cast<bool>(config.dvs_enabled)));
     n_->set_parameter(rclcpp::Parameter("dvs/gamma", static_cast<double>(config.dvs_gamma)));
     n_->set_parameter(rclcpp::Parameter("dvs/mode", static_cast<std::string>(config.dvs_mode)));
-    n_->set_parameter(rclcpp::Parameter("dvs/rate", static_cast<int>(config.dvs_rate)));
+    n_->set_parameter(rclcpp::Parameter("dvs/rate", static_cast<double>(config.dvs_rate)));
     n_->set_parameter(rclcpp::Parameter("dvs/size", static_cast<int>(config.dvs_size)));
     n_->set_parameter(rclcpp::Parameter("imu/enabled", static_cast<bool>(config.imu_enabled)));
 #endif
