@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 248.4 103.44"
+   version="1.1"
+   id="svg34"
+   sodipodi:docname="asap.svg"
+   inkscape:export-filename="asap.png"
+   inkscape:export-xdpi="500.66599"
+   inkscape:export-ydpi="500.66599"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview36"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="2.6932368"
+     inkscape:cx="148.33453"
+     inkscape:cy="91.525558"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg34" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1,.cls-9{isolation:isolate;}.cls-2,.cls-6{fill:navy;}.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8{stroke:#000;}.cls-2,.cls-3{stroke-miterlimit:10;}.cls-2,.cls-3,.cls-4,.cls-6,.cls-7,.cls-8{stroke-width:0.5px;}.cls-3{fill:#c80000;}.cls-4{fill:#b4b4b4;}.cls-4,.cls-5,.cls-6,.cls-7,.cls-8{stroke-linejoin:round;}.cls-5{stroke-width:0.44px;}.cls-7{fill:#323232;}.cls-8{fill:#646464;}.cls-9{font-size:77.22px;font-family:Helvetica;letter-spacing:-0.05em;}</style>
+  </defs>
+  <title
+     id="title6">asap</title>
+  <g
+     id="svg5"
+     transform="translate(0,14)">
+    <g
+       id="layer1">
+      <g
+         class="cls-1"
+         id="g10">
+        <path
+           d="m 174.57,173.1 h 12.92 c 2.56,0 4.61,1.39 6.18,4.17 1.57,2.78 2.33,6.73 2.33,11.73 a 28,28 0 0 1 -2.09,11.29 8.72,8.72 0 0 1 -2.49,3.48 c -1.1,0.89 -2.17,0.48 -3.69,0.48 h -9.28 v 24.25 h -3.89 z m 15.17,7.62 a 5.07,5.07 0 0 0 -3.54,-1.17 h -7.74 v 19.68 c 0,0 3,0 6,0 2.45,0 4.47,-0.67 6,-2.66 1.09,-1.44 1.64,-4 1.64,-7.58 -0.01,-4.05 -0.8,-6.82 -2.36,-8.27 z"
+           transform="translate(-44.93,-162.18)"
+           id="path8" />
+      </g>
+      <path
+         id="path333"
+         d="m 95.76,228.48 h -4.63 l 11.15,-55.35 h 4.62 l 11,55.36 H 113 l -8.38,-47.11 z"
+         transform="translate(-44.93,-162.18)" />
+    </g>
+  </g>
+  <g
+     id="Layer_2"
+     data-name="Layer 2"
+     transform="translate(0,14)">
+    <path
+       class="cls-2"
+       d="m 131.35,228.52 h -0.14 c -7.1,-0.1 -11.06,-4.94 -14.55,-9.21 -3.49,-4.27 -6.45,-7.89 -12.08,-7.89 v 0 c -4.48,0 -6,2.18 -8.24,3.52 -2.79,1.63 -2.18,2.56 -9.9,2.32 -1.11,0 -2,0.93 -3.42,1 l -0.24,-5 c 1.64,-0.08 2.48,-0.86 3.66,-1 2.68,-0.24 4.71,0.47 6.49,-1 2.31,-1.91 5.2,-4.85 11.64,-4.86 v 0 c 8,0 12.21,5.17 15.94,9.72 3.2,3.93 6,7.31 10.74,7.38 3.5,0.07 7.54,-2.91 8.09,-7.75 0.34,-2.92 0.14,-10 -8.87,-12.24 -5.11,-1.28 -8.91,-4.05 -11,-8 a 17.14,17.14 0 0 1 -0.91,-13.27 13.79,13.79 0 0 1 12.06,-9.12 c 6.75,-0.52 13.08,3.39 17,10.45 7,12.77 12.95,13.66 23.74,15.28 h 0.1 a 42.66,42.66 0 0 0 7.21,0.59 h 9.05 c 5.12,0 13.68,0 15.89,0 l 0.48,5 c -2.24,0 -11.25,0 -16.38,0 h -9 a 48.76,48.76 0 0 1 -8,-0.64 H 170.6 C 158.34,202 151,200.25 143.21,186 c -2.91,-5.3 -7.47,-8.25 -12.2,-7.88 a 8.75,8.75 0 0 0 -7.74,5.85 12.14,12.14 0 0 0 0.63,9.21 c 1.43,2.71 4.06,4.56 7.81,5.51 10.49,2.65 13.4,10.85 12.62,17.65 a 13.49,13.49 0 0 1 -12.98,12.18 z"
+       transform="translate(-44.93,-162.18)"
+       id="path15" />
+    <rect
+       class="cls-3"
+       x="156.33"
+       y="10.76"
+       width="91.830002"
+       height="55.330002"
+       rx="1.8099999"
+       id="rect17" />
+    <g
+       id="g4736">
+      <path
+         class="cls-4"
+         d="m 2.22,43.25 h 22.87 v 18.7 H 2.22 a 2,2 0 0 1 -2,-2 V 45.23 a 2,2 0 0 1 2,-1.98 z"
+         id="path19" />
+      <g
+         id="g2865">
+        <rect
+           id="rect2594"
+           class="cls-5"
+           x="4.4499998"
+           y="54.349998"
+           width="4.1900001"
+           height="4.4099998"
+           rx="1.02" />
+        <rect
+           id="rect2594-3"
+           class="cls-5"
+           x="4.4499998"
+           y="46.43"
+           width="4.1900001"
+           height="4.4099998"
+           rx="1.02" />
+      </g>
+      <rect
+         id="rect2889"
+         class="cls-6"
+         x="15.98"
+         y="39.119999"
+         width="25.52"
+         height="26.969999"
+         rx="3.3299999" />
+    </g>
+    <circle
+       class="cls-7"
+       cx="201.82001"
+       cy="38.419998"
+       r="18.809999"
+       id="circle26" />
+    <circle
+       class="cls-8"
+       cx="201.82001"
+       cy="38.419998"
+       r="15.52"
+       id="circle28" />
+  </g>
+  <g
+     id="Layer_5"
+     data-name="Layer 5"
+     transform="translate(0,14)">
+    <text
+       class="cls-9"
+       transform="matrix(0.52,0,0,1,99.66,66.3)"
+       id="text31">A</text>
+  </g>
+</svg>
